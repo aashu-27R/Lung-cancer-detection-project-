@@ -67,6 +67,10 @@ clid_ct_report_metrics('clid_ct_split_fourclass.mat')
 
 ## CLID Results (Observed)
 
+This project now includes both:
+- a **classical baseline** MATLAB classifier (`clid_ct_quickstart`)
+- a **CNN-based MATLAB model** using Deep Learning Toolbox (`clid_ct_cnn`)
+
 ### Binary (`normal` vs `cancer`)
 - Images used: `1027`
 - Class distribution: `normal=203`, `cancer=824`
@@ -98,3 +102,44 @@ clid_ct_report_metrics('clid_ct_split_fourclass.mat')
   5  1 34  1
  17 23  1 11]
 ```
+
+## CLID CT CNN (Deep Learning Toolbox)
+A true CNN-based MATLAB pipeline is also available for the same dataset:
+
+```matlab
+clid_ct_cnn          % binary: normal vs cancer
+clid_ct_cnn('fourclass')
+```
+
+Outputs:
+- `clid_ct_cnn_model_binary.mat` / `clid_ct_cnn_model_fourclass.mat`
+- `clid_ct_cnn_split_binary.mat` / `clid_ct_cnn_split_fourclass.mat`
+
+You can reuse the metrics helper on CNN outputs:
+
+```matlab
+clid_ct_report_metrics('clid_ct_cnn_split_binary.mat')
+clid_ct_report_metrics('clid_ct_cnn_split_fourclass.mat')
+```
+
+### CNN Binary Result (Observed)
+- Images used: `1039`
+- Class distribution: `normal=215`, `cancer=824`
+- Train/Val/Test split: `831 / 105 / 103`
+- Model: `CNN (MATLAB Deep Learning Toolbox)`
+- Test Accuracy: `98.06%`
+- Sensitivity (cancer): `0.9878`
+- Specificity: `0.9524`
+- Precision (cancer): `0.9878`
+- F1-score (cancer): `0.9878`
+- Macro F1: `0.9701`
+- Confusion matrix (rows=true, cols=pred):
+
+```text
+[20  1
+  1 81]
+```
+
+### Baseline vs CNN (Binary)
+- Baseline (`clid_ct_quickstart`): `93.20%` accuracy
+- CNN (`clid_ct_cnn`): `98.06%` accuracy

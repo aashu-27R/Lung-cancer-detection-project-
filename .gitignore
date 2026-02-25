@@ -1,0 +1,16 @@
+.DS_Store
+
+# Local datasets (large)
+archive/
+manifest-*/
+
+# Generated MATLAB outputs
+clid_ct_features*.mat
+clid_ct_split*.mat
+clid_ct_model*.mat
+lidc_features.mat
+lidc_index.mat
+lidc_index.csv
+
+# Local PDFs / notes
+half document.pdf
